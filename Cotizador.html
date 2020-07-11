@@ -524,9 +524,14 @@
         loaderBg: "#007bff",
         icon: "succsess",
         hideAfter: 4500,
-      //  afterHidden: function () {
-       //   location.href = "Cotizador.html";
-       // }
+      afterHidden: function () {
+    document.getElementById("peso").value="";
+    document.getElementById("alto").value="";
+    document.getElementById("ancho").value="";
+    document.getElementById("largo").value="";
+    document.getElementById("paisorigen").value="";
+    document.getElementById("descuento").value="";
+       }
       });
 
     } else {
@@ -537,6 +542,14 @@
         loaderBg: "#4CAF50",
         icon: "Error",
         hideAfter: 4500,
+        afterHidden: function () {
+          document.getElementById("peso").value="";
+    document.getElementById("alto").value="";
+    document.getElementById("ancho").value="";
+    document.getElementById("largo").value="";
+    document.getElementById("paisorigen").value="";
+    document.getElementById("descuento").value="";
+       }
       });
     }
 

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+  <meta name="generator" content="Jekyll v4.0.1" />
+  <link rel="icon" type="image/png" href="images\favicon.ico" />
+  <title>Cotizador CPS</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/" />
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css\jquery.toast.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="css/signin.css" rel="stylesheet" />
+</head>
+
+<body class="text-center" >
+
+
+  <style>
+    :host {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+      font-size: 14px;
+      color: #333;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 8px 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    .toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: #e76000;
+      color: white;
+      font-weight: 600;
+    }
+
+    .toolbar img {
+      margin: 0 16px;
+    }
+
+    .toolbar #twitter-logo {
+      height: 40px;
+      margin: 0 16px;
+    }
+
+    .toolbar #twitter-logo:hover {
+      opacity: 0.8;
+    }
+
+    .content {
+      display: flex;
+      margin: 82px auto 32px;
+      padding: 0 16px;
+      max-width: 960px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    svg.material-icons {
+      height: 24px;
+      width: auto;
+    }
+
+    svg.material-icons:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    .card svg.material-icons path {
+      fill: #888;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .card {
+      border-radius: 4px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+      height: 40px;
+      width: 200px;
+      margin: 0 8px 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      line-height: 24px;
+    }
+
+    .card-container .card:not(:last-child) {
+      margin-right: 0;
+    }
+
+    .card.card-small {
+      height: 16px;
+      width: 168px;
+    }
+
+    .card-container .card:not(.highlight-card) {
+      cursor: pointer;
+    }
+
+    .card-container .card:not(.highlight-card):hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-container .card:not(.highlight-card):hover .material-icons path {
+      fill: rgb(105, 103, 103);
+    }
+
+    .card.highlight-card {
+      background-color: #e76000;
+      color: white;
+      font-weight: 600;
+      border: none;
+      width: auto;
+      min-width: 30%;
+      position: relative;
+    }
+
+    .card.card.highlight-card span {
+      margin-left: 60px;
+    }
+
+    svg#rocket {
+      width: 80px;
+      position: absolute;
+      left: -10px;
+      top: -24px;
+    }
+
+    svg#rocket-smoke {
+      height: calc(100vh - 95px);
+      position: absolute;
+      top: 10px;
+      right: 180px;
+      z-index: -10;
+    }
+
+    a,
+    a:visited,
+    a:hover {
+      color: #e76000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #b14f0a;
+    }
+
+    .terminal {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 6px;
+      padding-top: 45px;
+      margin-top: 8px;
+      overflow: hidden;
+      background-color: rgb(15, 15, 16);
+    }
+
+    .terminal::before {
+      content: "\2022 \2022 \2022";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: rgb(58, 58, 58);
+      color: #c2c3c4;
+      width: 100%;
+      font-size: 2rem;
+      line-height: 0;
+      padding: 14px 0;
+      text-indent: 4px;
+    }
+
+    .terminal pre {
+      font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+      color: white;
+      padding: 0 1rem 1rem;
+      margin: 0;
+    }
+
+    .circle-link {
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      margin: 8px;
+      background-color: white;
+      border: 1px solid #eeeeee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: 1s ease-out;
+    }
+
+    .circle-link:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      line-height: 20px;
+    }
+
+    footer a {
+      display: flex;
+      align-items: center;
+    }
+
+    .github-star-badge {
+      color: #24292e;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      padding: 3px 10px;
+      border: 1px solid rgba(27, 31, 35, 0.2);
+      border-radius: 3px;
+      background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+      margin-left: 4px;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+        Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    }
+
+    .github-star-badge:hover {
+      background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+      border-color: rgba(27, 31, 35, 0.35);
+      background-position: -0.5em;
+    }
+
+    .github-star-badge .material-icons {
+      height: 16px;
+      width: 16px;
+      margin-right: 4px;
+    }
+
+    svg#clouds {
+      position: fixed;
+      bottom: -160px;
+      left: -230px;
+      z-index: -10;
+      width: 1920px;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 767px) {
+
+      .card-container>*:not(.circle-link),
+      .terminal {
+        width: 100%;
+      }
+
+      .card:not(.highlight-card) {
+        height: 16px;
+        margin: 8px 0;
+      }
+
+      .card.highlight-card span {
+        margin-left: 72px;
+      }
+
+      svg#rocket-smoke {
+        right: 120px;
+        transform: rotate(-5deg);
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      svg#rocket-smoke {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  </style>
+
+  <div class="toolbar" role="banner">
+    <span style="margin-left: 10px;">Cotizador CPS</span>
+    <div class="spacer"></div>
+  </div>
+  <div class="content" role="main">
+   
+    <div id="container1" class="card-container">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Peso</span>
+        </div>
+        <input type="text" id="peso" class="form-control rounded-right" required />
+      </div>
+
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Alto</span>
+        </div>
+        <input type="text" id="alto" class="form-control rounded-right" required />
+      </div>
+
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ancho</span>
+        </div>
+        <input type="text" id="ancho" class="form-control rounded-right" required />
+      </div>
+
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Largo</span>
+        </div>
+        <input type="text" id="largo" class="form-control rounded-right" required />
+      </div>
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Pais destino</span>
+        </div>
+        <select  class="form-control" id="paisdestino"></select>
+
+      </div>
+
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Pais origen</span>
+        </div>
+        <input type="text"  id="paisorigen"class="form-control rounded-right" required />
+      </div>
+
+      <div class="input-group mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">codigo de descuento</span>
+        </div>
+        <input type="text" id="descuento" class="form-control rounded-right" required />
+      </div>
+
+      <div class="input-group mt-5">
+        <button onclick="calcular()" type="button" class="btn btn-warning btn-lg btn-block">
+          Calcular
+        </button>
+      </div>
+    </div>
+    <div id="container2" class="card-container">
+    </div>
+    <!-- Footer -->
+    <footer></footer>
+
+    <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
+      viewBox="0 0 2611.084 485.677">
+      <path id="Path_39" data-name="Path 39"
+        d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
+        transform="translate(142.69 -634.312)" fill="#eee" />
+    </svg>
+  </div>
+  <router-outlet></router-outlet>
+</body>
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.toast.js"></script>
+<script type="text/javascript">
+
+    function calcular(){
+    var peso = document.getElementById("peso").value;
+    var alto = document.getElementById("alto").value;
+    var ancho = document.getElementById("ancho").value;
+    var largo = document.getElementById("largo").value;
+    var pdesnito = document.getElementById("paisdestino").value;
+    var porigen = document.getElementById("paisorigen").value;
+    var descuento = document.getElementById("descuento").value;
+//alert(""+peso+alto+ancho+largo+pdesnito+porigen+descuento+"");
+    $.ajax({
+      data: {
+        peso: peso,
+        alto: alto,
+        ancho: ancho,
+        largo: largo,
+        pdestino: pdesnito,
+        porigen:porigen,
+        descuento:descuento
+      }, //es la fornma en que se envian varios parametros con ajax(es un vector)
+      url: "insertarcotizacion.php", //url de donde obtener los datos
+      dataType: "json", //tipo de datos retornados
+      type: "post", //enviar variables como post
+    }).done(function (data) {
+        // Creamos una variable y evaluamos datos
+        var txtHTML = "";
+        if (!data.error) {
+          //Si se espera más de una fila hay que leer datos en un bucle
+          //txtHTML=datos.ID+"<br />"+datos.nombre ;
+          $.each(data, function (i, object) {
+
+            if(object=="[object Object]"){
+              
+              txtHTML +="<h1> Precio total :  Q"+Math.round(object['2']* 100) / 100+"</h1>";
+              mensaje("felicidades");
+            }else{
+              mensaje("no es usuario");
+              txtHTML +="<h1>Precio total :  Q"+Math.round(object* 100) / 100+"</h1>";
+             
+            }
+            
+          });
+        } else {
+          txtHTML = data.error;
+        }
+        document.getElementById("container2").innerHTML = txtHTML;
+        console.log(data);
+       
+        
+    }); 
+    }
+
+
+  $(function () {
+    
+     //usamos function porque document.ready es deprecated desde jQuery 3
+    //Guardamos una variable timer para poder pararla si ocurre error
+    
+    update();
+    var timer = setInterval(update, 500000);
+    function update() {
+      //Almacenamos la petición ajax en la variable request
+      var request = $.ajax
+        ({
+          url: "getPaises.php", //¿Ese archivo se llama así realmente?
+          method: "POST",
+          dataType: "json"
+        });
+      //Usamos request y evaluamos usando done y fail, es lo recomendado por jQuery
+      //done se lanzará cuando la petición Ajax tenga éxito
+      request.done(function (datos) {
+        // Creamos una variable y evaluamos datos
+        var txtHTML = "";
+        if (!datos.error) {
+          //Si se espera más de una fila hay que leer datos en un bucle
+          //txtHTML=datos.ID+"<br />"+datos.nombre ;
+          $.each(datos, function (i, objet) {
+            txtHTML +="<option value="+objet.ID_Region+">"+objet.nombre+"</option>";
+          });
+        } else {
+          txtHTML = datos.error;
+          clearInterval(timer); //paramos el timer
+        }
+        document.getElementById("paisdestino").innerHTML = txtHTML;
+
+
+      });
+
+      //fail se lanzará cuando la petición Ajax falle      
+      request.fail(function (jqXHR, textStatus) {
+        alert("Falló la petición Ajax: " + textStatus);
+        //Paramos el timer
+       clearInterval(timer);
+      });
+
+    }
+
+  });
+
+  function mensaje(mensaje) {
+
+    var mensaje = mensaje;
+    if (mensaje == "no es usuario") {
+      $.toast({
+        heading: 'Solicite un usuario para tener descuentos',
+        text: mensaje,
+        position: "top-right",
+        loaderBg: "#007bff",
+        icon: "succsess",
+        hideAfter: 4500,
+      //  afterHidden: function () {
+       //   location.href = "Cotizador.html";
+       // }
+      });
+
+    } else {
+      $.toast({
+        heading: 'Codigo de descuento correcto',
+        text: mensaje,
+        position: "top-right",
+        loaderBg: "#4CAF50",
+        icon: "Error",
+        hideAfter: 4500,
+      });
+    }
+
+
+  }
+</script>
+
+
+
+
+</html>
+
+
